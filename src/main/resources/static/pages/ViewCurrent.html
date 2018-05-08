@@ -1,0 +1,31 @@
+ <html>
+ <head>
+     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+     <link rel="stylesheet" href="../css/table.css" />
+     
+ </head>
+ <body><!-- <div class="row">
+<div class="column">
+<table class="table-fill">
+<thead>
+<tr>
+<th class="text-left">Company</th>
+<th class="text-left">Price</th>
+</tr>
+</thead>
+<!--  <tbody class="table-hover">
+<tr  ng-repeat="record in response" >
+<td class="text-left">{{record.company}}</td>
+<td class="text-left">{{record.price}}</td>
+</tr>--><div class="jumbotron text-center">
+	
+	
+	<ul>
+	<li ng-repeat="record in response">
+	{{record.company }}:
+	{{record.price}}
+	</li>
+	</ul>
+</div>
+</body>
+</html>

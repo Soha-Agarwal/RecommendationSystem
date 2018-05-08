@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+      <script src="controller.js"></script>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+      <link rel="stylesheet" href="css/table.css" />
+
+    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+   
+
+    <!-- Custom CSS -->
+    <link href="css/sb-admin-2.css" rel="stylesheet">
+
+ 
+ <!-- SCROLLS -->
+ <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+ 
+    <!-- Custom Fonts -->
+     <style>
+* {
+    box-sizing: border-box;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 33.33%;
+    padding: 10px;
+    height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+</style>
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body ng-app="app" ng-controller="postcontroller2">
+
+    <div id="wrapper" >
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default" style="background-color: black">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/" style="color: white">Stock Recommendation System</a>
+      </div>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="hello.html" style="color: white"><i class="fa fa-home" style="color: white"></i> Home</a></li>
+        <li><a href="/Logout" style="color: white"><i class="fa fa-comment" style="color: white"></i> Logout </a></li>
+      </ul>
+    </div>
+  </nav>
+            <!-- /.navbar-top-links -->
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                      
+                        <li>
+                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="#" ng-click="getHistory()"><i class="fa fa-bar-chart-o fa-fw"></i> History<span class="fa arrow"></span></a>
+                          
+                        </li>
+                     
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper" >
+            
+           
+            <div >
+                <div >
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <i class="fa fa-bar-chart-o fa-fw"></i> Recommendation
+                            <div class="pull-right">
+                                <div class="btn-group" >
+                                 
+
+    
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body" style"width:1500px;">
+                           <div >
+        <form class="form-horizontal" name="customerForm" ng-submit="submitForm()">
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="firstnameID">Amount:</label>
+                <div class="col-sm-5">
+                    <input type="text" class="form-control" name="firstname" id="firstnameID"
+                        placeholder="Enter Amount" ng-model="firstname"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-sm-2" for="lastnameID">Risk:</label>
+                <div class="col-sm-5">
+                <!--    <input type="text" class="form-control" name="lastname" id="lastnameID"
+                        placeholder="Enter Risk" ng-model="lastname"/>-->
+                          <input type="radio" name="lastname" value="low" checked  ng-model="lastname"> Low
+  <input type="radio" name="lastname" value="medium" ng-model="lastname"> Medium
+  <input type="radio" name="lastname" value="high" ng-model="lastname">High
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-default">Submit</button>
+                </div>
+            </div>
+        </form>
+ 
+  
+    
+  
+    <p style="color:green">{{saveDataMessage}}</p>
+    <div class="row">
+    <h4>Amount to be invested in respective caps</h4>
+    
+<div class="column">
+<div style="color:green">
+  {{ response[6].budget }}
+</div>
+
+<b><h3 text="black"><h3 text="black"><h3 style="color:green">Small Caps</h3></h3></b>
+
+<table class="table-fill">
+<thead>
+
+<tr>
+<th class="text-left">Company</th>
+<th class="text-left">Price</th>
+</tr>
+</thead>
+<tbody class="table-hover">
+<tr  ng-repeat="record in response" ng-if="record.cap=='small'">
+<td class="text-left">{{record.company}}</td>
+<td class="text-left">{{record.price}}</td>
+<td><!--  <form ng-submit="saveData()">
+
+<input type="text" ng-model="company" name="company" ng-init="{{record.company}}" style="display: none;"/>
+<input type="text" ng-model="price" name="price" value="{{record.price}}" style="display: none;"/>
+<input type="submit" value="save"/>
+
+</form>-->
+<a href="#" ng-click="saveData(record)">Save</a>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+
+    <div class="column">
+    <p style="color:green">{{response[3].budget}}</p>
+   <b> <h3 text="black"><h3 style="color:green">Mid Caps</h3></h3></b>
+<table class="table-fill">
+<thead>
+<tr>
+<th class="text-left">Company</th>
+<th class="text-left">Price</th>
+</tr>
+</thead>
+<tbody class="table-hover">
+<tr ng-repeat="record in response" ng-if="record.cap=='mid'">
+<td class="text-left" >{{record.company}}</td>
+<td class="text-left" >{{record.price}}</td>
+<td><a href="#" ng-click="saveData(record)">Save</a></td>
+</tr>
+
+</tbody>
+</table>
+</div>
+<div  ng-repeat="record in response | limitTo:1">
+      <p style="color:green">{{response[0].budget}}</p>
+  
+</div>
+    <div class="column">
+   <b> <h3 style="color:green">Large Caps</h3></b>
+    
+<table class="table-fill">
+<thead>
+<tr>
+<th class="text-left">Company</th>
+<th class="text-left">Price</th>
+</tr>
+</thead>
+<tbody class="table-hover">
+<tr ng-repeat="record in response" ng-if="record.cap=='large'">
+<td class="text-left">{{record.company}}</td>
+<td class="text-left">{{record.price}}</td>
+<td><a href="#" ng-click="saveData(record)">Save</a></td>
+
+</tr>
+</tbody>
+</table>
+</div>    
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+<div>
+<h1 align="center">User History</h1>
+<table class="table-fill">
+<thead>
+<tr>
+<th class="text-left">Company</th>
+<th class="text-left">Price</th>
+<th class="text-left">Date</th>
+</tr>
+</thead>
+<tbody class="table-hover">
+<tr ng-repeat="record in response1">
+<td class="text-left">{{record.company}}</td>
+<td class="text-left">{{record.price}}</td>
+<td class="text-left">{{record.date1}}</td>
+
+</tr>
+</tbody>
+</table>
+
+<div>
+</div>
+  </div>  
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                   
+                <!-- /.col-lg-4 -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+  
+
+</body>
+
+</html>

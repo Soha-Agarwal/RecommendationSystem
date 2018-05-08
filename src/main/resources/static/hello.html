@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+
+<!-- define angular app -->
+<html ng-app="scotchApp">
+
+<head>
+   <meta name="description" content="An image crossfade animation done with CSS3">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- SCROLLS -->
+ <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+ <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.0/css/font-awesome.css" />
+ 
+
+  <!-- SPELLS -->
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular-route.js"></script>
+  <script src="script.js"></script>
+</head>
+
+<!-- define angular controller -->
+<body ng-controller="mainController">
+ <div class="crossfade">
+ <figure></figure>
+      <figure></figure>
+      <figure></figure>
+      <figure></figure>
+      <figure></figure>
+  <nav class="navbar navbar-default" style="background-color:black">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="/" style="color:white;">Stock Recommendation System</a>
+      </div>
+
+      <ul class="nav navbar-nav navbar-right" >
+        <li><a href="#" style="color:white;"><i class="fa fa-home"></i> Home</a></li>
+        <li><a href="#about" style="color:white;"><i class="fa fa-shield"></i> About</a></li>
+        <li><a href="#contact" style="color:white;"><i class="fa fa-comment"></i> Login </a></li>
+         <li><a href="#view" ng-click="viewstocks()" style="color:white;"><i class="fa fa-topstocks"></i>View Current Stocks </a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <div id="main">
+  
+    <!-- angular templating -->
+		<!-- this is where content will be injected -->
+    <div ng-view></div>
+    
+  </div>
+  
+  <footer class="text-center">
+   <!--  <p>View the tutorial on <a href="http://scotch.io/tutorials/javascript/single-page-apps-with-angularjs-routing-and-templating">Scotch.io</a></p>
+  
+    <p>View a tutorial on <a href="http://scotch.io/tutorials/javascript/animating-angularjs-apps-ngview">Animating Your Angular Single Page App</a></p>
+    --> 
+  </footer>
+  
+</div>
+</body>
+
+</html>
